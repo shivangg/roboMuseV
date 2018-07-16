@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find robomuse_description)/urdf/rack/rack.gazebo.xacro" />
+
+  <xacro:macro name="robomuse_rack" params="name parent *origin">
+    <joint name="${name}_joint" type="fixed">
+      <insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="${name}_link"/>
+    </joint>
+    <link name="${name}_link">
+      <inertial>
+        <mass value="36.248046" />
+        <origin xyz="0 0 0.5" />
+        <inertia ixx="2.771653750257" ixy="0.004284522609" ixz="-0.160418504506"
+                 iyy="2.510019507959" iyz="0.029664468704" izz="0.526432355569" />
+      </inertial>
+
+      <visual>
+        <origin xyz="0 0 0.3" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://robomuse_description/meshes/rack.stl"  />
+        </geometry>
+
+        <material name="Orange" />
+      </visual>
+
+      <collision name="${name}_collision">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="${base_size_x/4} ${base_size_y/4} ${base_size_z/4}" />
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- extensions -->
+    <xacro:rack_gazebo name="${name}" />
+
+  </xacro:macro>
+</robot>

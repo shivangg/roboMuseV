@@ -1,0 +1,30 @@
+<launch>
+
+  <include file="$(find robomuse5_navigation)/launch/bringup.launch"/>
+
+
+  <!--master auto="start"/-->
+
+  <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find robomuse5_navigation)/my_map.yaml" output="screen"/>
+
+  <!--- Run AMCL -->
+  <include file="$(find robomuse5_navigation)/launch/amcl.launch"/>
+  <!--include file="$(find hector_slam_launch)/launch/tutorial.launch"/-->
+  <node pkg="rviz" type="rviz" name="rviz"
+    args="-d $(find hector_slam_launch)/rviz_cfg/mapping_demo.rviz"/>
+  
+  <!--Hector SLAM-->
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+  <remap from="mybot/laser/scan" to="scan" />
+  
+  	<!--remap from="cmd_vel" to="cmd_diff_vel"/-->
+    <rosparam file="$(find robomuse5_navigation)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find robomuse5_navigation)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find robomuse5_navigation)/params/local_costmap.yaml" command="load"  />
+    <rosparam file="$(find robomuse5_navigation)/params/global_costmap.yaml" command="load" />
+    <rosparam file="$(find robomuse5_navigation)/params/base_local_planner.yaml" command="load" />
+  </node>
+</launch>
+

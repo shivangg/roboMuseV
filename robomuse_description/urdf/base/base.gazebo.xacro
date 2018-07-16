@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+	xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+	xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+	xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<xacro:macro name="robomuse_wheel_gazebo" params="suffix">
+		<gazebo reference="${suffix}_wheel_link">
+			<mu1 value="100.0" />
+			<mu2 value="100.0" />
+			<kp  value="1000000.0" />
+			<kd  value="1.0" />
+			<maxVel  value="100.0" />
+			<minDepth  value="0.0" />
+			<material>Gazebo/Orange</material>
+		</gazebo>
+	</xacro:macro>
+
+	<xacro:macro name="robomuse_caster_gazebo">
+		<gazebo reference="caster_link">
+			<mu1 value="100.0" />
+			<mu2 value="100.0" />
+			<kp  value="1000000.0" />
+			<kd  value="1.0" />
+			<maxVel  value="100.0" />
+			<minDepth  value="0.0" />
+			<material>Gazebo/Orange</material>
+		</gazebo>
+	</xacro:macro>
+
+	<!-- position controller -->
+	<xacro:macro name="base_gazebo">
+		<gazebo>
+			<plugin name="base_controller" filename="libgazebo_ros_planar_move.so">
+				<commandTopic>cmd_vel</commandTopic>
+				<odometryTopic>odom</odometryTopic>
+				<odometryFrame>odom</odometryFrame>
+				<odometryRate>100.0</odometryRate>
+				<robotBaseFrame>base_footprint</robotBaseFrame>
+			</plugin>
+		</gazebo>
+	</xacro:macro>
+
+</robot>

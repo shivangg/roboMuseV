@@ -1,0 +1,12 @@
+<launch>
+  <node pkg="robomuse5_navigation" type="tf_broadcaster" name="tf_broadcaster" output="screen">
+  </node>
+
+  <include file="$(find ros_arduino_base)/launch/base_bringup.launch"/>
+
+
+  <include file="$(find rplidar_ros)/launch/rplidar.launch"/>
+
+
+
+</launch>

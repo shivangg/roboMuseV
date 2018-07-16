@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro"
+       name="robomuse" >
+  <!-- The following included files set up definitions of parts of the robot body -->
+  <!-- misc common stuff? -->
+  <xacro:include filename="$(find robomuse_description)/urdf/common.xacro" />
+  <!-- robomuse base -->
+  <xacro:include filename="$(find robomuse_description)/urdf/base/base.urdf.xacro" />
+  <!-- robomuse rack -->
+  <xacro:include filename="$(find robomuse_description)/urdf/rack/rack.urdf.xacro" />
+  <!-- generic simulator_gazebo plugins for starting mechanism control, (can be used for ros time, ros battery) -->
+  <xacro:include filename="$(find robomuse_description)/gazebo/gazebo.urdf.xacro" />
+  <!-- materials for visualization -->
+  <xacro:include filename="$(find robomuse_description)/urdf/materials.urdf.xacro" />
+
+  <xacro:robomuse_base name="base"/>
+
+  <xacro:robomuse_rack name="rack" parent="base_link">
+    <origin xyz="-0.09 0 0.033" rpy="0 0 0" />
+  </xacro:robomuse_rack>
+
+  <!-- Kinect1 xacro -->
+  <xacro:include filename="$(find robomuse_description)/urdf/sensors/kinect_camera.urdf.xacro" />
+  <xacro:kinect_camera_v0 name="camera" parent="base_link" >
+    <origin xyz="0.1 0 0.203" rpy="0.05 -0.12 0.0" />
+  </xacro:kinect_camera_v0>
+</robot>

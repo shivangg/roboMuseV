@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+	xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+	xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+	xmlns:xacro="http://ros.org/wiki/xacro">
+  
+  <!--  wheel transmission   -->
+  <xacro:macro name="robomuse_wheel_transmission" params="suffix">
+    <transmission type="transmission_interface/SimpleTransmission" name="${suffix}_wheel_trans">
+      <actuator name="${suffix}_wheel_motor" />
+      <joint name="${suffix}_wheel_joint" />
+      <mechanicalReduction>${624/35 * 80/18}</mechanicalReduction>
+    </transmission>
+  </xacro:macro>
+
+  <xacro:macro name="robomuse_caster_transmission">
+    <transmission type="transmission_interface/SimpleTransmission" name="caster_trans">
+      <actuator name="caster_motor" />
+      <joint name="caster_joint" />
+      <mechanicalReduction>${624/35 * 80/18}</mechanicalReduction>
+    </transmission>
+  </xacro:macro>
+</robot>
