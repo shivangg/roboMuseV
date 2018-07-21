@@ -16,7 +16,7 @@
   </include>
 
   <!-- Load Robomuse's description, controllers, and teleop nodes. -->
-  <param name="robot_description" command="$(find xacro)/xacro $(find robomuse_description)/robots/robomuse.urdf.xacro" />
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find robomuse_description)/robots/robomuse.urdf.xacro" />
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
   <include file="$(find ridgeback_control)/launch/control.launch" />
 
