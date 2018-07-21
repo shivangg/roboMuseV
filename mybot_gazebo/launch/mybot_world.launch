@@ -33,4 +33,7 @@
   <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
    args="-urdf -param robot_description -model mybot" />
 
+   <!-- RViz config to use -->
+   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mybot_description)/rviz/amcl.rviz" respawn="false"/>
+
 </launch>
