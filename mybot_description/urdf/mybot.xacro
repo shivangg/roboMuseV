@@ -6,7 +6,7 @@
   <xacro:property name="cameraMass" value="0.1"/>
 
   <xacro:include filename="$(find mybot_description)/urdf/mybot.gazebo" />
-  <xacro:include filename="$(find mybot_description)/urdf/materials.xacro" />
+  <!-- <xacro:include filename="$(find mybot_description)/urdf/materials.xacro" /> -->
   <xacro:include filename="$(find mybot_description)/urdf/macros.xacro" />
 
 
@@ -32,10 +32,9 @@
    <visual name='chassis_visual'>
       <origin xyz="0.5348 0.21 -0.252" rpy=" 0 0 -1.57"/>
       <geometry>
-        <mesh
-          filename="$(find mybot_description)/meshes/chassis.STL" />
+        <mesh filename="package://mybot_description/meshes/chassis.STL" />
       </geometry>
-<material name="black"/>
+<!-- <material name="orange"/> -->
     </visual>
 
     <collision name='caster_collision'>
@@ -100,8 +99,7 @@
      <visual name="left_wheel_visual">
       <origin xyz="0 0.027 0" rpy="1.57 0 0"/>
        <geometry>
-        <mesh
-          filename="$(find mybot_description)/meshes/lwheel.STL" />
+        <mesh filename="package://mybot_description/meshes/lwheel.STL" />
       </geometry>
     </visual>
     <inertial>
@@ -125,8 +123,7 @@
     <visual name="right_wheel_visual">
       <origin xyz="0 -0.1 0" rpy="1.57 0 0"/>
        <geometry>
-        <mesh
-          filename="$(find mybot_description)/meshes/rwheel.STL" />
+        <mesh filename="package://mybot_description/meshes/rwheel.STL" />
       </geometry>
     </visual>
     <inertial>
@@ -174,7 +171,7 @@
       <geometry>
          <box size="0.001 0.001 0.001"/>
       </geometry>
-      <material name="green"/>
+      <!-- <material name="green"/> -->
     </visual>
 
     <inertial>
@@ -212,7 +209,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="$(find mybot_description)/meshes/hokuyo.dae" />
+        <mesh filename="package://mybot_description/meshes/hokuyo.dae" />
       </geometry>
     </visual>
 
