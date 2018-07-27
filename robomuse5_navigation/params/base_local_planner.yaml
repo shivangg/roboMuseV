@@ -10,8 +10,8 @@ TrajectoryPlannerROS:
   acc_lim_theta: 1.0
 
 # Goal Tolerance Parameters
-  yaw_goal_tolerance: 0.3
-  xy_goal_tolerance: 0.15
+  yaw_goal_tolerance: 0.9
+  xy_goal_tolerance: 0.95
 
 # Forward Simulation Parameters
   sim_time: 3.0
@@ -30,7 +30,7 @@ TrajectoryPlannerROS:
   oscillation_reset_dist: 0.05
 
   holonomic_robot: false
-  max_vel_y: 0.0
+  max_vel_y: 10.0
   min_vel_y: 0.0
-  acc_lim_y: 0.0
+  acc_lim_y: 10.0
   vy_samples: 1
