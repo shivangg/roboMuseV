@@ -15,17 +15,5 @@
   <node pkg="rviz" type="rviz" name="rviz"
     args="-d $(find hector_slam_launch)/rviz_cfg/mapping_demo.rviz"/>
   
-  <!--Hector SLAM-->
-
-  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-  <remap from="mybot/laser/scan" to="scan" />
-  
-  	<!--remap from="cmd_vel" to="cmd_diff_vel"/-->
-    <rosparam file="$(find robomuse5_navigation)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find robomuse5_navigation)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find robomuse5_navigation)/params/local_costmap.yaml" command="load"  />
-    <rosparam file="$(find robomuse5_navigation)/params/global_costmap.yaml" command="load" />
-    <rosparam file="$(find robomuse5_navigation)/params/base_local_planner.yaml" command="load" />
-  </node>
 </launch>
 
