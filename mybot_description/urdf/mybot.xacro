@@ -9,6 +9,17 @@
   <!-- <xacro:include filename="$(find mybot_description)/urdf/materials.xacro" /> -->
   <xacro:include filename="$(find mybot_description)/urdf/macros.xacro" />
 
+  <link name="base_link">
+    
+  </link>
+
+  <joint name="base_joint" type="fixed">
+    <axis xyz="0 0 0" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="chassis"/>
+  </joint>
+
 
   <link name='chassis'>
     <pose>0 0 0.1 0 0 0</pose>
@@ -189,16 +200,8 @@
     <child link="camera"/>
   </joint>
 
-
-  <joint name="hokuyo_joint" type="fixed">
-    <axis xyz="0 1 0" />
-    <origin xyz=".15 0 .2" rpy="0 0 0"/>
-    <parent link="chassis"/>
-    <child link="hokuyo"/>
-  </joint>
-
-  <!-- Hokuyo Laser -->
-  <link name="hokuyo">
+  <!-- rplidar Laser -->
+  <link name="rplidar">
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
@@ -209,7 +212,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://mybot_description/meshes/hokuyo.dae" />
+        <mesh filename="package://mybot_description/meshes/rplidar.dae" />
       </geometry>
     </visual>
 
@@ -220,6 +223,12 @@
     </inertial>
   </link>
 
+  <joint name="rplidar_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz=".15 0 .2" rpy="0 0 0"/>
+    <parent link="chassis"/>
+    <child link="rplidar"/>
+  </joint>
 
 </robot>
 
