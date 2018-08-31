@@ -59,7 +59,7 @@ ROSArduinoBase::ROSArduinoBase(ros::NodeHandle nh):
   encoders_sub_ = nh_.subscribe("encoders", 5, &ROSArduinoBase::encodersCallback, this);
   cmd_vel_sub_ = nh_.subscribe("cmd_vel", 5, &ROSArduinoBase::cmdVelCallback, this);
   update_gains_client_ = nh.serviceClient<ros_arduino_base::UpdateGains>("update_gains");
-  update_gains_client_.waitForExistence();
+  //update_gains_client_.waitForExistence();
   ros::Duration(2).sleep();
   dynamic_reconfigure::Server<ros_arduino_base::MotorGainsConfig>::CallbackType 
     f = boost::bind(&ROSArduinoBase::motorGainsCallback, this, _1, _2);

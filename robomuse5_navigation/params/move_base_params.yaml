@@ -11,7 +11,7 @@ shutdown_costmaps: false
 
 # The rate in Hz at which to run the control loop and send velocity
 # commands to the base.
-controller_frequency: 3.0
+#controller_frequency: 3
 # How long the controller will wait in seconds without receiving a
 # valid control before space-clearing operations are performed.
 controller_patience: 3.0
@@ -49,6 +49,3 @@ base_global_planner: "navfn/NavfnROS"
 #
 # http://wiki.ros.org/nav_core#BaseLocalPlanner
 base_local_planner: "dwa_local_planner/DWAPlannerROS"
-
-
-

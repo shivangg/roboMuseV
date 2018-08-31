@@ -5,7 +5,7 @@
   <include file="$(find ros_arduino_base)/launch/base_bringup.launch"/>
 
 
-  <include file="$(find rplidar_ros)/launch/rplidar.launch"/>
+  <!-- <include file="$(find rplidar_ros)/launch/rplidar.launch"/> -->
 
 
 

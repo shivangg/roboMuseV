@@ -20,7 +20,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+  INCLUDE_DIRS include
 #  LIBRARIES robomuse5_navigation
 #  CATKIN_DEPENDS geometry_msgs roscpp rospy sensor_msgs tf
 #  DEPENDS system_lib
@@ -70,9 +70,6 @@ include_directories(
 
 add_executable(tf_broadcaster src/tf_broadcaster.cpp)
 target_link_libraries(tf_broadcaster ${catkin_LIBRARIES})
-add_executable(teleop_twist_keyboard.py src/tf_broadcaster.cpp)
-target_link_libraries(teleop_twist_keyboard.py ${catkin_LIBRARIES})
-
 
 #############
 ## Install ##

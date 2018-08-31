@@ -6,14 +6,27 @@
   <!--master auto="start"/-->
 
   <!-- Run the map server -->
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find robomuse5_navigation)/maps/playground.yaml" output="screen"/>
+  <!--node name="map_server" pkg="map_server" type="map_server" args="$(find robomuse5_navigation)/my_map.pgm my_map_resolution"/-->
+<!--node name="map_server" pkg="map_server" type="map_server" args="$(find robomuse5_navigation)/maps/mymap.pgm"/-->
 
   <!--- Run AMCL -->
   <include file="$(find robomuse5_navigation)/launch/amcl.launch"/>
-  
-  <!--include file="$(find hector_slam_launch)/launch/tutorial.launch"/-->
+  <include file="$(find hector_slam_launch)/launch/tutorial.launch"/>
+  <!--Hector SLAM-->
+  <!--node pkg="gmapping" type="slam_gmapping" name="map_builder" output="screen">
+    <param name="base_frame" value="base_link" />
+  </node>
   <node pkg="rviz" type="rviz" name="rviz"
-    args="-d $(find hector_slam_launch)/rviz_cfg/mapping_demo.rviz"/>
-  
-</launch>
+    args="-d $(find hector_slam_launch)/rviz_cfg/mapping_demo.rviz"/-->
 
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+  	<!--remap from="cmd_vel" to="cmd_diff_vel"/-->
+    <rosparam file="$(find robomuse5_navigation)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find robomuse5_navigation)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find robomuse5_navigation)/params/local_costmap.yaml" command="load" />
+    <rosparam file="$(find robomuse5_navigation)/params/global_costmap.yaml" command="load" />
+    <rosparam file="$(find robomuse5_navigation)/params/base_local_planner.yaml" command="load" />
+    <rosparam file="$(find turtlebot_navigation)/param/global_planner_params.yaml" command="load" />
+    <rosparam file="$(find turtlebot_navigation)/param/navfn_global_planner_params.yaml" command="load" />
+  </node>
+</launch>

@@ -1,11 +1,14 @@
 local_costmap:
- global_frame: odom
- robot_base_frame: chassis
- update_frequency: 1.0
- publish_frequency: 5.0
- static_map: false
- rolling_window: true
- width: 2.0
- height: 2.5
- resolution: 0.1
- transform_tolerance: 0.5
+  global_frame: odom
+  robot_base_frame: base_link
+  update_frequency: 1.0
+  publish_frequency: 5.0
+  static_map: false
+  rolling_window: true
+  width: 1.0
+  height: 1.25
+  resolution: 0.1
+  transform_tolerance: 0.5
+  
+  plugins:
+     - {name: obstacle_layer,        type: "costmap_2d::ObstacleLayer", output: "screen"}

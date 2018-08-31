@@ -1,0 +1,11 @@
+<launch>
+
+<node pkg="gmapping" type="slam_gmapping" name="map_builder" output="screen">
+    <!--param name="base_frame" value="base_link" /-->
+  </node>
+  <node pkg="rviz" type="rviz" name="rviz"
+    args="-d $(find hector_slam_launch)/rviz_cfg/mapping_demo.rviz"/>
+
+<include file="$(find rplidar_ros)/launch/rplidar.launch"/>
+
+</launch>
