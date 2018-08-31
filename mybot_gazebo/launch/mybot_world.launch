@@ -19,9 +19,9 @@
   </include>
 
   <!-- Publish simulated robot joint values. Comment when using real robot-->
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+  <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
     <param name="use_gui" value="false"/>
-  </node>
+  </node> -->
 
   <!-- Send simulated robot states to tf. Comment when using real robot -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"/>
@@ -30,8 +30,8 @@
   <param name="robot_description" command="$(find xacro)/xacro.py --inorder '$(find mybot_description)/urdf/mybot.xacro'"/>
 
   <!-- For spawning the robot in Gazebo. Comment when using real robot -->
-  <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
-   args="-urdf -param robot_description -model mybot" />
+  <!-- <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+   args="-urdf -param robot_description -model mybot" /> -->
 
    <!-- RViz config to use -->
    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mybot_description)/rviz/amcl.rviz" respawn="false"/>
