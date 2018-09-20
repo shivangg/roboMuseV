@@ -14,6 +14,17 @@
   <param name="kld_z" value="0.99"/>
   <param name="odom_alpha1" value="0.2"/>
   <param name="odom_alpha2" value="0.2"/>
+
+  <param name="odom_frame_id" value="odom"/> 
+  <param name="base_frame_id" value="base_link"/> 
+  <param name="global_frame_id" value="map"/>
+
+  <remap from="scan" to="mybot/laser/scan"/>
+
+  <param name="initial_pose_x"            value="0.0"/>
+  <param name="initial_pose_y"            value="0.0"/>
+  <param name="initial_pose_a"            value="0.0"/>
+  
   <!-- translation std dev, m -->
   <param name="odom_alpha3" value="0.8"/>
   <param name="odom_alpha4" value="0.2"/>
