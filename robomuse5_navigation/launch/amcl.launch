@@ -1,8 +1,9 @@
 <!--AMCL Configuration for RoboMuse5.0-->
 
 <launch>
-<node pkg="amcl" type="amcl" name="amcl">
+<node pkg="amcl" type="amcl" name="amcl" output="screen">
   <!-- Publish scans from best pose at a max of 10 Hz -->
+  <param name="use_map_topic" value="true"/>
   <param name="odom_model_type" value="omni"/>
   <param name="odom_alpha5" value="0.1"/>
   <param name="transform_tolerance" value="0.2" />
